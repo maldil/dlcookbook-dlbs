@@ -2,6 +2,7 @@
 from __future__ import print_function
 import re
 import sys
+import numpy as np
 
 
 MODEL_TITLES = {
@@ -69,7 +70,7 @@ def main():
     if model in MODEL_TITLES:
         print("__exp.model_title__=\"%s\"" % MODEL_TITLES[model])
     if len(speeds) > 0:
-        speed = sum(speeds) / len(speeds)
+        speed = np.mean(speeds)
         batch_time = 1000.0 / (speed / effective_batch)
         # Print results
         print("__results.throughput__=%f" % speed)
